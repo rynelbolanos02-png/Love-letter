@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bubu & Dudu — For You, Jewel 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --pink: #FFB7D5;
+    --deep-pink: #E8538A;
+    --lavender: #C8B6E2;
+    --deep-lavender: #8C6BAE;
+    --cream: #FFF8F0;
+    --peach: #FFD6B8;
+    --text-dark: #4A2040;
+    --text-mid: #7A4060;
+    --white: #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(160deg, #FFE8F2 0%, #F7EEFF 40%, #FFE8F2 80%, #FFF0E8 100%);
+    min-height: 100vh;
+    color: var(--text-dark);
+    overflow-x: hidden;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ctext y='16' font-size='16'%3E💕%3C/text%3E%3C/svg%3E"), auto;
+  }
+
+  /* FLOATING ELEMENTS */
+  .floaties { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+
+  .floaty {
+    position: absolute;
+    animation: floatUp linear infinite;
+    opacity: 0.4;
+    font-size: 1.2rem;
+    will-change: transform;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.5; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* HERO SECTION */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .hero-badge {
+    background: linear-gradient(135deg, var(--pink), var(--lavender));
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border-radius: 99px;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .bears-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    animation: fadeDown 0.9s ease 0.1s both;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    font-weight: 700;
+    color: var(--deep-pink);
+    line-height: 1.1;
+    animation: fadeDown 1s ease 0.2s both;
+    text-shadow: 0 2px 30px rgba(232,83,138,0.15);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--deep-lavender);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    color: var(--text-mid);
+    margin-top: 0.8rem;
+    font-weight: 400;
+    max-width: 480px;
+    line-height: 1.6;
+    animation: fadeDown 1s ease 0.35s both;
+  }
+
+  .hero-names {
+    margin-top: 1.8rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    color: var(--text-mid);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    animation: fadeDown 1s ease 0.45s both;
+  }
+
+  .hero-names span {
+    color: var(--deep-pink);
+    font-weight: 800;
+  }
+
+  .hero-names .amp {
+    color: var(--deep-lavender);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+  }
+
+  .scroll-hint {
+    margin-top: 3rem;
+    animation: bounce 2s ease-in-out infinite, fadeDown 1s ease 0.6s both;
+    color: var(--text-mid);
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .scroll-hint svg { animation: bounce 2s 0.2s ease-in-out infinite; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTION SHARED */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 5rem 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--deep-lavender);
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--deep-pink);
+    margin-bottom: 1.2rem;
+    line-height: 1.2;
+  }
+
+  /* DIVIDER */
+  .divider {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    color: var(--pink);
+    font-size: 1.4rem;
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--pink), transparent);
+    max-width: 300px;
+  }
+
+  /* LOVE LETTER */
+  .letter-card {
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255,183,213,0.5);
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 8px 40px rgba(232,83,138,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .letter-card::before {
+    content: '💌';
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 2rem;
+    opacity: 0.3;
+  }
+
+  .letter-card p {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    line-height: 1.9;
+    margin-bottom: 1rem;
+  }
+
+  .letter-card .signature {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--deep-pink);
+    margin-top: 1.5rem;
+    text-align: right;
+  }
+
+  /* DATE IDEAS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+
+  .date-card {
+    background: rgba(255,255,255,0.8);
+    border: 1.5px solid rgba(200,182,226,0.4);
+    border-radius: 20px;
+    padding: 1.8rem 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .date-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,183,213,0.12), rgba(200,182,226,0.12));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .date-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 16px 40px rgba(232,83,138,0.12); }
+  .date-card:hover::after { opacity: 1; }
+
+  .date-card .icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .date-card h3 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--deep-pink);
+    margin-bottom: 0.4rem;
+  }
+
+  .date-card p {
+    font-size: 0.875rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  /* PROMISE SECTION */
+  .promises {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .promise-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: rgba(255,255,255,0.7);
+    border: 1.5px solid rgba(255,183,213,0.4);
+    border-radius: 16px;
+    padding: 1.2rem 1.5rem;
+    transition: transform 0.2s ease;
+  }
+
+  .promise-item:hover { transform: translateX(6px); }
+
+  .promise-num {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    background: linear-gradient(135deg, var(--pink), var(--lavender));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: white;
+  }
+
+  .promise-item p {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+    padding-top: 0.2rem;
+  }
+
+  /* INTERACTIVE BUTTON */
+  .cta-section {
+    text-align: center;
+    padding: 4rem 2rem 6rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-section p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.3rem, 4vw, 2rem);
+    color: var(--text-mid);
+    margin-bottom: 2rem;
+  }
+
+  .btn-yes {
+    background: linear-gradient(135deg, var(--deep-pink), var(--deep-lavender));
+    color: white;
+    border: none;
+    border-radius: 99px;
+    padding: 1rem 3rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(232,83,138,0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .btn-yes:hover { transform: scale(1.07); box-shadow: 0 12px 40px rgba(232,83,138,0.45); }
+  .btn-yes:active { transform: scale(0.97); }
+
+  .btn-no {
+    background: transparent;
+    color: var(--text-mid);
+    border: 1.5px solid var(--pink);
+    border-radius: 99px;
+    padding: 0.9rem 2.5rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 1rem;
+    transition: all 0.2s ease;
+  }
+
+  .btn-no:hover { background: var(--pink); color: white; }
+
+  .cta-msg {
+    margin-top: 2rem;
+    font-size: 1.3rem;
+    color: var(--deep-pink);
+    font-weight: 700;
+    min-height: 2rem;
+    animation: popIn 0.4s ease;
+  }
+
+  @keyframes popIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  /* CONFETTI */
+  .confetti-piece {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    top: -20px;
+    animation: fall linear forwards;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  @keyframes fall {
+    to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* FOOTER */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    border-top: 1px solid rgba(255,183,213,0.3);
+  }
+
+  footer strong { color: var(--deep-pink); }
+
+  /* BEAR SVG STYLING */
+  .bear-wrap { filter: drop-shadow(0 8px 20px rgba(232,83,138,0.2)); }
+
+  /* HEART BURST */
+  .heart-burst {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    font-size: 1.5rem;
+    animation: burstOut 0.9s ease forwards;
+  }
+
+  @keyframes burstOut {
+    0% { transform: scale(0) translateY(0); opacity: 1; }
+    60% { opacity: 1; }
+    100% { transform: scale(1.8) translateY(-60px); opacity: 0; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .letter-card { padding: 2rem 1.5rem; }
+    .btn-no { margin-left: 0; margin-top: 0.8rem; }
+    .cta-section .btns { display: flex; flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating background elements -->
+<div class="floaties" id="floaties"></div>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <span class="hero-badge">✦ Iloveyouu mahal! ✦</span>
+
+  <div class="bears-container">
+    <!-- Bubu (pink bear) -->
+    <div class="bear-wrap">
+      <svg width="120" height="140" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- ears -->
+        <ellipse cx="28" cy="38" rx="16" ry="15" fill="#F4A0C4"/>
+        <ellipse cx="28" cy="38" rx="10" ry="9" fill="#FFD0E6"/>
+        <ellipse cx="92" cy="38" rx="16" ry="15" fill="#F4A0C4"/>
+        <ellipse cx="92" cy="38" rx="10" ry="9" fill="#FFD0E6"/>
+        <!-- head -->
+        <ellipse cx="60" cy="58" rx="42" ry="38" fill="#F9B8D5"/>
+        <!-- face blush -->
+        <ellipse cx="38" cy="70" rx="11" ry="8" fill="#F07AB0" opacity="0.4"/>
+        <ellipse cx="82" cy="70" rx="11" ry="8" fill="#F07AB0" opacity="0.4"/>
+        <!-- eyes -->
+        <ellipse cx="46" cy="56" rx="7" ry="8" fill="#4A2040"/>
+        <ellipse cx="74" cy="56" rx="7" ry="8" fill="#4A2040"/>
+        <ellipse cx="48" cy="54" rx="2.5" ry="2.5" fill="white"/>
+        <ellipse cx="76" cy="54" rx="2.5" ry="2.5" fill="white"/>
+        <!-- snout -->
+        <ellipse cx="60" cy="70" rx="14" ry="10" fill="#FFD0E6"/>
+        <ellipse cx="60" cy="67" rx="5" ry="3.5" fill="#D4669A"/>
+        <!-- smile -->
+        <path d="M52 75 Q60 82 68 75" stroke="#D4669A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- body -->
+        <ellipse cx="60" cy="115" rx="36" ry="30" fill="#F9B8D5"/>
+        <!-- tummy -->
+        <ellipse cx="60" cy="117" rx="20" ry="18" fill="#FFD0E6"/>
+        <!-- arms -->
+        <ellipse cx="24" cy="108" rx="12" ry="20" fill="#F9B8D5" transform="rotate(-15 24 108)"/>
+        <ellipse cx="96" cy="108" rx="12" ry="20" fill="#F9B8D5" transform="rotate(15 96 108)"/>
+        <!-- heart in hand -->
+        <text x="88" y="100" font-size="14" text-anchor="middle">💕</text>
+        <!-- legs -->
+        <ellipse cx="46" cy="138" rx="12" ry="8" fill="#F4A0C4"/>
+        <ellipse cx="74" cy="138" rx="12" ry="8" fill="#F4A0C4"/>
+      </svg>
+    </div>
+
+    <!-- Heart in middle -->
+    <div style="font-size:2.5rem; margin-bottom: 20px; animation: heartbeat 1.2s ease-in-out infinite;">💖</div>
+
+    <!-- Dudu (lavender/cream bear) -->
+    <div class="bear-wrap">
+      <svg width="120" height="140" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- ears -->
+        <ellipse cx="28" cy="38" rx="16" ry="15" fill="#C8A8DC"/>
+        <ellipse cx="28" cy="38" rx="10" ry="9" fill="#EAD9F5"/>
+        <ellipse cx="92" cy="38" rx="16" ry="15" fill="#C8A8DC"/>
+        <ellipse cx="92" cy="38" rx="10" ry="9" fill="#EAD9F5"/>
+        <!-- head -->
+        <ellipse cx="60" cy="58" rx="42" ry="38" fill="#DCC8F0"/>
+        <!-- face blush -->
+        <ellipse cx="38" cy="70" rx="11" ry="8" fill="#B48DD4" opacity="0.3"/>
+        <ellipse cx="82" cy="70" rx="11" ry="8" fill="#B48DD4" opacity="0.3"/>
+        <!-- eyes — happy crescent -->
+        <path d="M40 58 Q46 50 52 58" stroke="#4A2040" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M68 58 Q74 50 80 58" stroke="#4A2040" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- snout -->
+        <ellipse cx="60" cy="70" rx="14" ry="10" fill="#EAD9F5"/>
+        <ellipse cx="60" cy="67" rx="5" ry="3.5" fill="#9B6EC8"/>
+        <!-- smile -->
+        <path d="M52 75 Q60 82 68 75" stroke="#9B6EC8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- body -->
+        <ellipse cx="60" cy="115" rx="36" ry="30" fill="#DCC8F0"/>
+        <!-- tummy -->
+        <ellipse cx="60" cy="117" rx="20" ry="18" fill="#EAD9F5"/>
+        <!-- arms -->
+        <ellipse cx="24" cy="108" rx="12" ry="20" fill="#DCC8F0" transform="rotate(-15 24 108)"/>
+        <ellipse cx="96" cy="108" rx="12" ry="20" fill="#DCC8F0" transform="rotate(15 96 108)"/>
+        <!-- flower bouquet -->
+        <text x="28" y="100" font-size="14" text-anchor="middle">🌸</text>
+        <!-- legs -->
+        <ellipse cx="46" cy="138" rx="12" ry="8" fill="#C8A8DC"/>
+        <ellipse cx="74" cy="138" rx="12" ry="8" fill="#C8A8DC"/>
+      </svg>
+    </div>
+  </div>
+
+  <h1>Hi, <em>Mahal ko!</em>...</h1>
+  <p class="hero-subtitle">Ikaw si Dudu mahal tapos ako si Bubu mo hehe 🐻💕🐻</p>
+  <p class="hero-names"><span>Your special person</span> <span class="amp">&</span> <span>Ry na maaacm</span></p>
+
+  <div class="scroll-hint">
+    <span>Scroll down for your surprise</span>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#C8B6E2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</div>
+
+<!-- ===== DIVIDER ===== -->
+<div class="divider">🌸 ✦ 🌸</div>
+
+<!-- ===== LOVE LETTER ===== -->
+<section>
+  <span class="section-tag">✦ From the heart</span>
+  <h2 class="section-title">A Little Love Letter</h2>
+  <div class="letter-card">
+    <p>My dearest <strong>Jewel Chantal</strong>,</p>
+    <p>
+      Iloveyou so much mahal! Mahal na mahal kita mahal at gusto ko ng bukas na nandon ka, kasama ka mahal. Gusto ko kasama ka palagi katabi matulog at sabay gising.
+    </p>
+    <p>
+      Pangako ko sayo mahal na lahat ng plano natin at pangarap magkasama natin matutupad hehe. Sabay natin yun abutin mahal ko ah. Mahal na mahal kita.
+    </p>
+    <p>
+     Ginawa ko to mahal hehe para malaman mo na kung gaano kita kamahal kahit na wala pa akong maibigay sa ngayon sana matanggap mo ito at matuwa ka hehe. Ginawa ko to kase ito lang yung alam ko na paraan para maipakita gaano kita kamahal.
+    </p>
+    <p>Date tayo mahal ah pag sahod ko hehe 🌸</p>
+    <div class="signature">Forever yours, Ry na maacm 💕</div>
+  </div>
+</section>
+
+<!-- ===== DIVIDER ===== -->
+<div class="divider">🐻 ✦ 🐻</div>
+
+<!-- ===== DATE IDEAS ===== -->
+<section>
+  <h2 class="section-title">Date ulit us mahal!</h2>
+  <p style="color: var(--text-mid); font-size: 1rem; line-height: 1.7;">Date tayo palagi mahal hehehe sa sunod ako naman  gagastos hehe</p>
+  <div class="cards-grid">
+    <div class="date-card">
+      <span class="icon">🎬</span>
+      <h3>Movie Datet</h3>
+      <p>Pasensya na ikaw mahal if nakakatulog ako ah pero soaper enjoy ko lagi movie date natin hehe especially sa sinehan.</p>
+    </div>
+    <div class="date-card">
+      <span class="icon">🌅</span>
+      <h3>Dagat Date!</h3>
+      <p>Super happy nung nag dagat tayo hehe kahit na biglaan pero planado ko. Sobrang happy hehe liligo us tapos ako tinatangay ng alon</p>
+    </div>
+    <div class="date-card">
+      <span class="icon">🍜</span>
+      <h3>Food Trip</h3>
+      <p>Syempre lalo na to mahal. Lalo na pag nasa bahay tayo yung fries, bbq, tenga, yung sundae tsaka mcflurry. Kahit yung sa may karinderya mahal masarap ang kain palagi pag sabay us!</p>
+    </div>
+    <div class="date-card">
+      <span class="icon">📸</span>
+      <h3>Picture picture!!</h3>
+      <p>Sobrang dami natin picture mahal and madadagdagan pa. Sa dagat, sa simbahan, sa ibang bansa!! Palagi tayo magkasama</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIVIDER ===== -->
+<div class="divider">💕 ✦ 💕</div>
+
+<!-- ===== PROMISES ===== -->
+<section>
+  <span class="section-tag">✦ My vows</span>
+  <h2 class="section-title">I Promise You</h2>
+  <div class="promises">
+    <div class="promise-item">
+      <div class="promise-num">1</div>
+      <p>Hindi ko hahayaan mahal na masaktan ka pa ulit. Ayoko yung dati parehas tayo nasasaktan. Pangako mahal at maniwala ka, Ikaw lang!!</p>
+    </div>
+    <div class="promise-item">
+      <div class="promise-num">2</div>
+      <p>Palagi kitang pipiliin at palagi ko ipagdadasal relationship natin mahal para mas lalo tayo tumatag.</p>
+    </div>
+    <div class="promise-item">
+      <div class="promise-num">3</div>
+      <p>Palagi ako gagawa ng paraan para mapasaya ka lalo na sa mga paraan na kaya ko tulad ng lili ko.</p>
+    </div>
+    <div class="promise-item">
+      <div class="promise-num">4</div>
+      <p>Susurpresahin ka sa kahit na maliit na bagay tulad nito para maipakita gaano kita kamahal</p>
+    </div>
+    <div class="promise-item">
+      <div class="promise-num">5</div>
+      <p>Palaging hahawakan kamay mo sa lahat ng oras at yakap mahal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<div class="cta-section">
+  <p>So, <em>Mahal</em>…</p>
+  <p style="font-family:'Playfair Display',serif; font-size:clamp(1.5rem,5vw,2.8rem); font-weight:700; color:var(--deep-pink); margin-bottom:2rem;">Love mo ako palagi kahit maasim ako? 🌸</p>
+  <div class="btns">
+    <button class="btn-yes" onclick="sayYes()">💖 Yes, always!</button>
+    <button class="btn-no" onclick="runAway(this)">Ayaw</button>
+  </div>
+  <div class="cta-msg" id="cta-msg"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Made with all my love for <strong>Jewel Chantal Placer</strong> 💕<br>
+  <span style="font-size:0.75rem; opacity:0.6; margin-top:0.3rem; display:block;">Inspired by Bubu & Dudu — the sweetest bears, just like us.</span>
+</footer>
+
+<script>
+  // Generate floating elements
+  const emojis = ['💕','🌸','✨','💖','🌷','💗','⭐','🌺','💝','🍀'];
+  const container = document.getElementById('floaties');
+  for (let i = 0; i < 30; i++) {
+    const el = document.createElement('div');
+    el.classList.add('floaty');
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.animationDuration = (8 + Math.random() * 14) + 's';
+    el.style.animationDelay = (Math.random() * 14) + 's';
+    el.style.fontSize = (0.8 + Math.random() * 0.9) + 'rem';
+    container.appendChild(el);
+  }
+
+  // Heart burst on click
+  document.addEventListener('click', (e) => {
+    const h = document.createElement('div');
+    h.className = 'heart-burst';
+    h.textContent = ['💕','💖','🌸','✨'][Math.floor(Math.random()*4)];
+    h.style.left = e.clientX + 'px';
+    h.style.top = e.clientY + 'px';
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 900);
+  });
+
+  // Heartbeat animation
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      30% { transform: scale(1.25); }
+      60% { transform: scale(1.1); }
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Yes button
+  function sayYes() {
+    const msg = document.getElementById('cta-msg');
+    msg.textContent = '';
+    setTimeout(() => { msg.textContent = '💖 Yehey!! Iloveyouu so much mahal ko!! 🐻💕🐻'; }, 50);
+    launchConfetti();
+    launchConfetti();
+    launchConfetti();
+  }
+
+  // No button runs away
+  let noClicks = 0;
+  const noReplies = ['Are you sure? 🥺','Really sure?? 🐻','Please na mahal :( 💕','Ihhh love mo ako eh 💖'];
+  function runAway(btn) {
+    noClicks = Math.min(noClicks, noReplies.length - 1);
+    const msg = document.getElementById('cta-msg');
+    msg.textContent = noReplies[noClicks++];
+
+    // Move the button randomly
+    const maxX = window.innerWidth - 160;
+    const maxY = window.innerHeight - 60;
+    btn.style.position = 'fixed';
+    btn.style.left = Math.random() * maxX + 'px';
+    btn.style.top = Math.random() * maxY + 'px';
+    btn.style.transition = 'all 0.3s ease';
+    btn.style.zIndex = '9000';
+  }
+
+  // Confetti
+  function launchConfetti() {
+    const colors = ['#FFB7D5','#C8B6E2','#FFD6B8','#F9B8D5','#DCC8F0','#F4A0C4','#ffffff'];
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti-piece';
+      c.style.left = (20 + Math.random() * 60) + 'vw';
+      c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.width = (6 + Math.random() * 8) + 'px';
+      c.style.height = (6 + Math.random() * 8) + 'px';
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      c.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+      c.style.animationDelay = (Math.random() * 0.6) + 's';
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 4000);
+    }
+  }
+</script>
+</body>
+</html>
